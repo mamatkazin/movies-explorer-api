@@ -1,0 +1,48 @@
+{
+  "name": "movies-explorer-api",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js",
+    "lint": "npx eslint ."
+  },
+  "devDependencies": {
+    "eslint": "^7.23.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.22.1",
+    "nodemon": "^2.0.7"
+  },
+  "description": "## MoviesExplorerApi",
+  "main": "app.js",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "celebrate": "^14.0.0",
+    "cookie-parser": "^1.4.5",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-rate-limit": "^5.2.6",
+    "express-validator": "^6.10.0",
+    "express-winston": "^4.1.0",
+    "helmet": "^4.5.0",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.11.15",
+    "validator": "^13.5.2",
+    "winston": "^3.3.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mamatkazin/movies-explorer-api"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mamatkazin/movies-explorer-api/issues"
+  },
+  "homepage": "https://github.com/mamatkazin/movies-explorer-api#readme",
+  "prettier": {
+    "singleQuote": true
+  }
+}
