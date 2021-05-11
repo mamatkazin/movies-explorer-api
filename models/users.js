@@ -6,6 +6,7 @@ const { HTTPError } = require('../services/error');
 const userSchema = new mongoose.Schema({
   name: {
     type: String,
+    required: true,
     trim: true,
     minlength: 2,
     maxlength: 30,
@@ -25,6 +26,7 @@ const userSchema = new mongoose.Schema({
   password: {
     type: String,
     required: true,
+    trim: true,
     select: false,
   },
 });

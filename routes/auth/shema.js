@@ -4,6 +4,7 @@ module.exports.validatorCreateUser = celebrate({
   body: Joi.object().keys({
     name: Joi
       .string()
+      .required()
       .trim()
       .min(2)
       .max(30),

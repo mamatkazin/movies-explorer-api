@@ -36,11 +36,14 @@ module.exports.validatorCreateMovie = celebrate({
       .required()
       .trim()
       .regex(/^(http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-/]))?/),
-    movieId: Joi
+    owner: Joi
       .string()
       .required()
       .hex()
       .length(24),
+    movieId: Joi
+      .number()
+      .required(),
     nameRU: Joi
       .string()
       .required()
