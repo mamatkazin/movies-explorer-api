@@ -5,6 +5,7 @@ const dotenv = require('dotenv');
 const cors = require('cors');
 const rateLimit = require('express-rate-limit');
 const helmet = require('helmet');
+const cookieParser = require('cookie-parser');
 
 dotenv.config();
 
@@ -33,6 +34,8 @@ app.use(helmet());
 app.use(rateLimit(configRateLimit));
 
 app.use(requestLogger);
+
+app.use(cookieParser());
 
 router(app);
 

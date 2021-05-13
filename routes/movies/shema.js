@@ -1,4 +1,6 @@
 const { celebrate, Joi } = require('celebrate');
+const validator = require('validator');
+const { INVALID_FIELD } = require('../../services/const');
 
 module.exports.validatorCreateMovie = celebrate({
   body: Joi.object().keys({
@@ -25,22 +27,38 @@ module.exports.validatorCreateMovie = celebrate({
       .string()
       .required()
       .trim()
-      .regex(/^(http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-/]))?/),
+      // .regex(/^(http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-/]))?/)
+      .custom((value, helpers) => {
+        if (validator.isURL(value)) {
+          return value;
+        }
+
+        return helpers.message(INVALID_FIELD);
+      }),
     trailer: Joi
       .string()
       .required()
       .trim()
-      .regex(/^(http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-/]))?/),
+      // .regex(/^(http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-/]))?/),
+      .custom((value, helpers) => {
+        if (validator.isURL(value)) {
+          return value;
+        }
+
+        return helpers.message(INVALID_FIELD);
+      }),
     thumbnail: Joi
       .string()
       .required()
       .trim()
-      .regex(/^(http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-/]))?/),
-    owner: Joi
-      .string()
-      .required()
-      .hex()
-      .length(24),
+      // .regex(/^(http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-/]))?/),
+      .custom((value, helpers) => {
+        if (validator.isURL(value)) {
+          return value;
+        }
+
+        return helpers.message(INVALID_FIELD);
+      }),
     movieId: Joi
       .number()
       .required(),

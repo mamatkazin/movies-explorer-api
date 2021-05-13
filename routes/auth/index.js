@@ -1,4 +1,3 @@
-const cookieParser = require('cookie-parser');
 const routerAuth = require('express').Router();
 
 const { validatorLogin, validatorCreateUser } = require('./shema');
@@ -7,6 +6,6 @@ const auth = require('../../middlewares/auth');
 
 routerAuth.post('/signin', validatorLogin, login);
 routerAuth.post('/signup', validatorCreateUser, createUser);
-routerAuth.post('/signout', cookieParser(), auth, logout);
+routerAuth.post('/signout', auth, logout);
 
 module.exports = routerAuth;

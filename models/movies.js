@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const { INVALID_FIELD } = require('../services/const');
 
 const movieSchema = new mongoose.Schema({
   country: {
@@ -35,7 +36,7 @@ const movieSchema = new mongoose.Schema({
           val,
         );
       },
-      message: '{VALUE} is not a valid url',
+      message: INVALID_FIELD,
     },
   },
   trailer: {
@@ -48,7 +49,7 @@ const movieSchema = new mongoose.Schema({
           val,
         );
       },
-      message: '{VALUE} is not a valid url',
+      message: INVALID_FIELD,
     },
   },
   thumbnail: {
@@ -61,7 +62,7 @@ const movieSchema = new mongoose.Schema({
           val,
         );
       },
-      message: '{VALUE} is not a valid url',
+      message: INVALID_FIELD,
     },
   },
   owner: {

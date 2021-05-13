@@ -1,5 +1,6 @@
 const Movie = require('../../models/movies');
 const { HTTPError } = require('../../services/error');
+const { NOT_FOUND, DONT_DELETE } = require('../../services/const');
 
 module.exports.createMovie = (req, res, next) => {
   const body = { ...req.body };
@@ -15,20 +16,20 @@ module.exports.deleteMovie = (req, res, next) => {
   Movie.findById(req.params.movieId)
     .then((data) => {
       if (!data) {
-        throw new HTTPError(404, 'Карточка не найдена.');
+        throw new HTTPError(404, NOT_FOUND);
       }
 
       if (String(data.owner) !== req.user._id) {
-        throw new HTTPError(403, 'Удалять можно только свою карточку.');
+        throw new HTTPError(403, DONT_DELETE);
       }
 
-      data.remove(() => res.status(200).send(data));
+      return data.remove(() => res.send(data));
     })
     .catch(next);
 };
 
 module.exports.listMovies = (req, res, next) => {
   Movie.find({})
-    .then((data) => res.status(200).send(data))
+    .then((data) => res.send(data))
     .catch(next);
 };

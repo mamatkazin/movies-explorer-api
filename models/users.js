@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
 const validator = require('validator');
 const { HTTPError } = require('../services/error');
+const { INVALID_AUTH, INVALID_FIELD } = require('../services/const');
 
 const userSchema = new mongoose.Schema({
   name: {
@@ -19,7 +20,7 @@ const userSchema = new mongoose.Schema({
     lowercase: true,
     validate: {
       validator: validator.isEmail,
-      message: '{VALUE} is not a valid email',
+      message: INVALID_FIELD,
       isAsync: false,
     },
   },
@@ -43,12 +44,12 @@ userSchema.statics.authenticator = function authenticator(email, password) {
     .select('+password')
     .then((user) => {
       if (!user) {
-        throw new HTTPError(401, 'Неправильные почта или пароль');
+        throw new HTTPError(401, INVALID_AUTH);
       }
 
       return bcrypt.compare(password, user.password).then((matched) => {
         if (!matched) {
-          throw new HTTPError(401, 'Неправильные почта или пароль');
+          throw new HTTPError(401, INVALID_AUTH);
         }
 
         return user;
