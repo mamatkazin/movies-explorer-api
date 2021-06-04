@@ -1,6 +1,6 @@
 module.exports.JWT_SECRET_DEV = 'kjh8748uhrlfdjh6gfvyb78hus';
 module.exports.PATH_DB_DEV = 'mongodb://localhost:27017/bitfilmsdb';
-module.exports.PORT_DEV = 3000;
+module.exports.PORT_DEV = 4000;
 module.exports.EXPIRES_IN = '7d';
 module.exports.COOKIE_JWT = 'jwt';
 module.exports.USER_EXIST = 'Пользователь с таким емайл уже существует.';
